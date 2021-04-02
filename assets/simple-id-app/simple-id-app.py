@@ -1,5 +1,5 @@
 import requests
-import aiohttp
+from aiohttp import web
 
 
 PORT = 8000
@@ -7,8 +7,6 @@ INSTANCE_ID = 'http://169.254.169.254/latest/meta-data/instance-id'
 
 
 def main():
-    from aiohttp import web
-
     async def handle(request):
         resp = requests.get(INSTANCE_ID).text
         return web.Response(text=resp)
